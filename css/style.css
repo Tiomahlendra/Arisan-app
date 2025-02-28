@@ -155,7 +155,7 @@ button:hover {
 /* Responsive untuk layar lebih kecil */
 @media (max-width: 480px) {
   .center-panel {
-      padding: 150px 10px; /* Kurangi padding di HP */
+      padding: 200px 10px; /* Kurangi padding di HP */
   }
 
   .logo h1 {
