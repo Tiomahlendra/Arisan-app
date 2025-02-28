@@ -73,6 +73,7 @@ button:hover {
   border-radius: 10px;
   font-size: 13px;
 }
+ 
 
 .list_of_names div:hover {
   background: #00080c;
@@ -80,7 +81,7 @@ button:hover {
 .center-panel {
   width: 40%; 
   max-width: 600px; 
-  padding: 200px 20px; /* Tambah ruang atas & bawah */
+  padding: 400px 500px; /* Tambah ruang atas & bawah */
   margin: 50px auto; 
   background: linear-gradient(135deg, #13010852, #18000d); 
   border: 2px solid white; 
@@ -138,4 +139,46 @@ button:hover {
   color: #fcf9fa;
   text-decoration: underline;
   text-decoration-color: #41b6e6;
+}
+.center-panel {
+  width: 90%; /* Lebih fleksibel untuk layar kecil */
+  max-width: 500px; /* Maksimal ukuran untuk layar besar */
+  padding: 200px 20px; /* Kurangi padding agar tidak terlalu besar di HP */
+  margin: 50px auto;
+  background: linear-gradient(135deg, #13010852, #18000d);
+  border: 2px solid white;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive untuk layar lebih kecil */
+@media (max-width: 480px) {
+  .center-panel {
+      padding: 150px 10px; /* Kurangi padding di HP */
+  }
+
+  .logo h1 {
+      font-size: 24px; /* Perkecil ukuran teks agar lebih pas */
+  }
+
+  input {
+      font-size: 16px; /* Sesuaikan ukuran input di HP */
+      padding: 8px;
+  }
+
+  button {
+      font-size: 14px; /* Perkecil tombol di layar kecil */
+      padding: 8px;
+  }
+
+  .list_of_names div {
+      font-size: 12px; /* Perkecil ukuran teks daftar nama */
+  }
+
+  .action_button {
+      font-size: 14px;
+      padding: 8px;
+      width: 150px; /* Kurangi ukuran tombol agar proporsional */
+  }
 }
