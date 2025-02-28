@@ -156,7 +156,7 @@ button:hover {
 @media (max-width: 480px) {
   .center-panel {
       padding: 160px 10px; /* Kurangi padding di HP */
-      margin-top: -30px;
+      margin-top: -40px;
     left: 0;
   }
 
