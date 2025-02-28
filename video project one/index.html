@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+          /* Latar belakang utama */
+          body {
+            background: url('https://source.unsplash.com/random/1600x900/?technology') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        /* Efek Glassmorphism */
+        .datetime-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 15px 20px;
+            border-radius: 15px;
+            background: rgba(20, 20, 20, 0.486);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            font-family: 'Arial', sans-serif;
+            font-size: 18px;
+            color: white;
+            font-weight: bold;
+            display: inline-block;
+            border: 2px solid white; 
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3); 
+            z-index: -1; 
+        }
+
+        .icon {
+            margin-right: 8px;
+        }
+
+        /* Efek glow untuk teks */
+        .datetime-container p {
+            text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.7);
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Aplikasi Arisan</title>
+</head>
+<body>
+    <div class="datetime-container">
+        <p>📅 <span id="tanggal"></span></p>
+        <p>⏰ <span id="waktu"></span> WIB</p>
+    </div>
+
+    <script>
+        function updateDateTime() {
+            let now = new Date();
+            
+            // Format tanggal
+            let optionsDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            let formattedDate = now.toLocaleDateString('id-ID', optionsDate);
+
+            // Format waktu (WITA = UTC+8)
+            let optionsTime = { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'Asia/Makassar' };
+            let formattedTime = now.toLocaleTimeString('id-ID', optionsTime);
+
+            document.getElementById("tanggal").innerHTML = formattedDate;
+            document.getElementById("waktu").innerHTML = formattedTime;
+        }
+
+        setInterval(updateDateTime, 1000); // Perbarui setiap detik
+        updateDateTime(); // Jalankan saat pertama kali
+    </script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+     <div id="particles-js"></div>
+     <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 100 },
+                "size": { "value": 3 },
+                "move": { "speed": 3 }
+            }
+        });
+    </script>
+     <div class="center-panel">
+<div id="app">
+    <div id="names" class="container" v-if="state">
+       
+        <div class="logo animate__animated animate__fadeIn">
+            <h1>Siapa yang Dapat Arisan Hari Ini</h1>
+        </div>
+
+        <div class="input_container animate__animated animate__fadeIn">
+            <input type="text" v-model.trim="inputName"/>
+            <button @click="addNameToList">Add</button>
+        </div>
+
+        <div 
+        class="error_label animate__animated animate__shakeX"
+        v-if = "showError"
+        >
+        {{ error }}
+    </div>
+
+    <div class="list_of_names">
+        <div
+        v-for="(name,index) in names"
+        :key="name"
+        @click="removeName(index)"
+        class="animate__animated animate__fadeIn"
+        >
+        {{ name }}
+    </div>
+    </div>
+    <div v-if="isReady" class="animate__animated animate__bounceIn">  
+        <div class="action_button" @click="showResult">
+            Check The Winner    
+        </div>
+    </div>
+    </div>
+    <div id="result" class="container animate__animated " v-if="!state">
+        <div class="result_container animate__animated animate__fadeIn">
+        
+            <div class="result_container">
+                <h1>The Winner Is:</h1>
+                <div class="result_value animate__animated">
+                    {{ result }}
+                </div>
+            </div>
+
+            <div class="action_button  animate__animated animate__fadeIn" @click="resetApp ">
+                Mulai Baru!
+            </div>
+            <br>
+            <div class="action_button btn2 animate__animated animate__fadeIn" @click="getNewResult">
+                Ganti Pemenang
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+</body>
+<script src="script/app.js"></script>
+</html>
